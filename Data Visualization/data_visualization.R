@@ -18,7 +18,9 @@ plt <- plt + geom_point(size=4, shape=1)
 plt <- plt + geom_smooth(aes(group=1), method='lm', formula=y~log(x), se=FALSE, color='red')
 plt <- plt + geom_text(aes(label = Country), color = "gray20", 
              data = subset(df, Country %in% pointsToLabel),check_overlap = TRUE)
-plt <- plt + scale_x_continuous(limits=c(0.9,10.5), breaks=1:10)
-plt <- plt + theme_economist_white()
+plt <- plt + scale_x_continuous(name="Corruption Perceptions Index, 2011 (10 = least corrupt)", limits=c(0.9,10.5), breaks=1:10)
+plt <- plt + scale_y_continuous(name="Human Development Index, 2011 (1=Best)", limits=c(0.2, 1.0))
+plt <- plt + ggtitle("Corruption and Human Development")
+plt <- plt + theme_economist_white() + theme(plot.title = element_text(hjust = 0.5))
 print(plt)
 
